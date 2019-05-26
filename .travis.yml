@@ -1,0 +1,36 @@
+language: php
+php:
+  - '7.2'
+
+env:
+  global:
+    - GITHUB_REPO: "fodekar/seo_tools"
+    - secure: "Cfyg6wZZszHbmuaIEnf0ZFWCm2kJhWRN+0SpVLL0fQMQXsxE+9oonMg+u9Y4B9fCDdMcaZIo5VpWFuI+OiakpGKATxPAL6GyxVaP38ot61hExUzwelB/a/fdr6HyXfIF5sGgywK0MViIQfS8DNL35bHOxZQVbrdkS9qlZ7IwQ3KdQewnQO9Almnwo3EqZsQORj4ADept7H6ERDUpgPELXmNSjRNIHzU5K/4HOLnutnKoJu7iWNizDOzSwP5505j87UeBSYVUEpxDswCEaYbUieIxdTm9u6/Jjb/NSFzFhKF8GouiM9BymsSXI/F0zw97699RCwr4vi4QoypIk9WKSm9dxDhCHPAR9wlhQNRK4fj1ikZeFDKETMIu5wyw//+D1L3RKwTMSNw1F0FMkcusJr1bkiuI35MdFHlzNWtVunUJItMZ7yh/NxA72/yRzpVy4fZ4JX4+NK/Jia6in2L2wcYctuom4CmVUfZ85yNcvnSnVePbKv1NZChI1xxsYoTlvGmHWU54BNv0hnySDOoqCTx1DuQA/BEbacnE6JA6VdHn/bKWEQytz1TpMqpmNsS4MLxO9NFswGPDRl4GV4V1uGjSpqL+WJJHm5XnFWrwhrM6wOUqhRIT9/MBj6rSnVbRFlGme0Myqj8DWsBHUzQSl6iJIPZEZiI9CP3jADTFBEU="
+
+script:
+   - composer install
+   #- vendor/bin/phpunit
+
+before_script:
+  - cp .env.test .env
+  - composer install --no-progress
+after_success:
+  #- vendor/bin/couscous travis-auto-deploy
+
+notifications:
+  irc:
+    template:
+      - "%{repository_slug}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+      - "Change view : %{compare_url}"
+      - "Build details : %{build_url}"
+  email:
+    recipients:
+      - chancelvyfodekar@gmail.com
+      - hess.website@gmail.com
+    on_success: change
+    on_failure: always
+  slack:
+    template:
+      - "Build <%{build_url}|#%{build_number}: %{commit_subject}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
+    rooms:
+      - hess-kn:FsAjzGENr3KPZr8p6TC7dDVV#seo_tools
