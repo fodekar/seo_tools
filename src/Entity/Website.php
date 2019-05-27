@@ -22,7 +22,7 @@ class Website
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Thematic", cascade={"persist"})
      */
-     private $thematic;
+    private $thematic;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -120,22 +120,6 @@ class Website
     }
 
     /**
-     * @ORM\PrePersist
-     */
-    public function prePersist() 
-    {
-        $this->createdAt = new \DateTime();
-    }
-     
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate() 
-    {
-        $this->updatedAt = new \DateTime();
-    }
-
-    /**
      * @return Collection|Thematic[]
      */
     public function getThematic(): Collection
@@ -159,5 +143,21 @@ class Website
         }
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
     }
 }
