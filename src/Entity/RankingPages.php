@@ -53,7 +53,7 @@ class RankingPages
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $updatedAt;
- 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,22 +119,6 @@ class RankingPages
         return $this;
     }
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist() 
-    {
-        $this->createdAt = new \DateTime();
-    }
-      
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate() 
-    {
-        $this->updatedAt = new \DateTime();
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -157,5 +141,21 @@ class RankingPages
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
     }
 }
