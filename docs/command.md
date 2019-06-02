@@ -10,5 +10,5 @@ Symfony met à disposition des commandes de base, parmis lesquelles :
 - met à jour la base de données en tenant compte des écarts dans le schema YML : `php bin/console doctrine:schema:update --force``
 - réaliser une copie des Assets `php bin/console assetic:dump`
 - débloquer la mémoire: `php -d memory_limit=-1 composer.phar`
-- insertion des données en base sans vider les structure : `php bin/console doctrine:fixtures:load --append`
+- insertion des données de fixtures en base sans vider les tables : `php bin/console doctrine:fixtures:load --append`
 - Afficher la liste des route : `php bin/console debug:router`
