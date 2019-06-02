@@ -1,0 +1,34 @@
+template:
+    #url: https://github.com/CouscousPHP/Template-Light
+    directory: docs/templates/
+
+exclude:
+    - web/docs
+    - vendor
+
+github:
+    user: fodekar
+    repo: seo_tools
+
+title: seo tools
+subTitle: - Documentation technique.
+
+baseUrl: http://localhost:81/docs
+
+menu:
+    sections:
+        main:
+            name:
+            items:
+                home:
+                    text: "Accueil"
+                    relativeUrl: index.html
+                    tag: home
+                install:
+                    text: "Installation"
+                    relativeUrl: docs/install.html
+                    tag: install
+                command:
+                    text: "Commandes utiles"
+                    relativeUrl: docs/command.html
+                    tag: command
