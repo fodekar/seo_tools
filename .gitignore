@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -21,4 +22,29 @@
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
+=======
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/.env
+/public/bundles/
+/public/docs/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+>>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
 ###< phpunit/phpunit ###

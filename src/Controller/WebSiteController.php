@@ -2,10 +2,20 @@
 
 namespace App\Controller;
 
+<<<<<<< HEAD
+=======
+use Symfony\Component\HttpFoundation\Response;
+>>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Website;
 use App\Entity\Thematic;
+<<<<<<< HEAD
+=======
+use Psr\Log\LoggerInterface;
+use App\Service\MessageGenerator;
+use App\Service\SiteUpdateManager;
+>>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
 
 
 class WebSiteController extends AbstractController
@@ -24,9 +34,14 @@ class WebSiteController extends AbstractController
         
         try {
             $em->remove($website);
+<<<<<<< HEAD
             $em->flush();
         } catch (\Throwable $th) {
             
+=======
+            //  $em->flush();
+        } catch (\Throwable $th) {
+>>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
         }
 
 
@@ -53,17 +68,62 @@ class WebSiteController extends AbstractController
         // $em->persist($image);
 
         // Étape 2 : On déclenche l'enregistrement
+<<<<<<< HEAD
         $em->flush();
+=======
+        //$em->flush();
+>>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
 
         //$website_repository->updateUrl("TVcongo", "http://zenga-mambu.com/");
 
         $advert->setUrl("http://google.com/");
         
+<<<<<<< HEAD
         $em->flush();
+=======
+        //$em->flush();
+>>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
         
         return $this->render('web_site/index.html.twig', [
             'controller_name' => 'WebSiteController',
             'thematic' => $thematic_repository->findOneById(3)
         ]);
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * @Route("debug/{max}")
+     */
+    public function debug($max, LoggerInterface $logger)
+    {
+        $logger->info('Look! I just used a service');
+        
+        return new Response(
+            '<html><body>Lucky number: '.$max.'</body></html>'
+        );
+
+        // ...
+    }
+
+    /**
+     * @Route("/message", name="happy")
+     */
+    public function new(MessageGenerator $messageGenerator, SiteUpdateManager $siteUpdateManager)
+    {
+        // thanks to the type-hint, the container will instantiate a
+        // new MessageGenerator and pass it to you!
+        // ...
+
+        $mail = $siteUpdateManager->notifyOfSiteUpdate();
+        $message = $messageGenerator->getHappyMessage();
+        $this->addflash('succes', $message);
+
+        return new Response(
+            '<html><body>Lucky number:' .$mail. '</body></html>'
+        );
+
+        //...
+    }
+>>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
 }
