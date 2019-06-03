@@ -13,15 +13,12 @@ class SearchEngineFixtures extends Fixture
         $data = [
             'Google' => [
                 'variables' => '?q=[query]&start=[position]'
-<<<<<<< HEAD
-=======
             ],
             'Yahoo' => [
                 'variables' => '?p=[query]&b=[position]'
             ],
             'Bing' => [
                 'variables' => '?q=[query]&start=[position]'
->>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
             ]
         ];
 
