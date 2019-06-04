@@ -28,7 +28,7 @@ services:
         class: App\Admin\KeywordsAdmin
         arguments: [~, App\Entity\Keywords, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Mots clés" }
+            - { name: sonata.admin, manager_type: orm, label: "Mots clés------" }
     admin.thematic:
         class: App\Admin\ThematicAdmin
         arguments: [~, App\Entity\Thematic, ~]
