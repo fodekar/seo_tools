@@ -24,5 +24,33 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    admin.keywords:
+        class: App\Admin\KeywordsAdmin
+        arguments: [~, App\Entity\Keywords, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Mots clés" }
+    admin.thematic:
+        class: App\Admin\ThematicAdmin
+        arguments: [~, App\Entity\Thematic, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Thématiques" }
+    admin.website:
+        class: App\Admin\WebSiteAdmin
+        arguments: [~, App\Entity\Website, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Sites Web" }
+    admin.settings:
+        class: App\Admin\SettingsAdmin
+        arguments: [~, App\Entity\Settings, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Paramètres" }
+    admin.searchengine:
+        class: App\Admin\SearchEngineAdmin
+        arguments: [~, App\Entity\SearchEngine, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Moteurs de recherche" }
+    admin.rankingpage:
+        class: App\Admin\RankingPagesAdmin
+        arguments: [~, App\Entity\RankingPages, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Analyses" }

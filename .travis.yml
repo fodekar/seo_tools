@@ -34,3 +34,9 @@ notifications:
       - "Build <%{build_url}|#%{build_number}: %{commit_subject}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
     rooms:
       - hess-kn:FsAjzGENr3KPZr8p6TC7dDVV#seo_tools
+
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh production $TRAVIS_TAG
+  on:
+    branch: master
