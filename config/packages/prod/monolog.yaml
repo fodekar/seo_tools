@@ -51,7 +51,7 @@ monolog:
             handler: swift
         swift:
             type:       swift_mailer
-            from_email: 'no-reply@seo-elsa.com'
+            from_email: 'technical@seo-elsa.com'
             to_email:
                 - 'chancelvyfodekar@gmail.com'
                 - 'hess.website@gmail.com'
