@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Website;
 use App\Entity\Thematic;
+use App\Service\SiteUpdateManager;
+use Psr\Log\LoggerInterface;
 
 
 class WebSiteController extends AbstractController
@@ -13,8 +15,19 @@ class WebSiteController extends AbstractController
     /**
      * @Route("/website", name="web_site")
      */
-    public function index()
+    public function index(SiteUpdateManager $messageGenerator, LoggerInterface $logger)
     {
+        $messageGenerator->notifyOfSiteUpdates();
+
+        $logger->info('I just got the logger');
+        $logger->error('An error occurred');
+
+        $logger->critical('I left the oven on!', [
+            // include extra "context" info in your logs
+            'cause' => 'in_hurry',
+        ]);
+
+
         // On récupère l'EntityManager
         $em = $this->getDoctrine()->getManager();
         $website_repository = $em->getRepository(Website::class);

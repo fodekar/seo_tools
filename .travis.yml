@@ -27,6 +27,7 @@ notifications:
     recipients:
       - chancelvyfodekar@gmail.com
       - hess.website@gmail.com
+      - technical@seo-elsa.com
     on_success: change
     on_failure: always
   slack:
