@@ -65,8 +65,8 @@ monolog:
             content_type: text/html
         slack:
             type:       slack
-            token:       xoxp-571231712704-571403756273-616786841316-e275bbd5b7bf9698ffc2e0bc96983cf3
+            token:       xoxp-571231712704-571403756273-645319677043-db3eecf4b9a12900a9cb98afa7e5b3bb
             channel:     "#seo_tools"
-            bot_name:    SEO_TOOLS-Error
+            bot_name:    SEO-TOOLS-Error
             icon_emoji: :ghost:
             level:      critical
