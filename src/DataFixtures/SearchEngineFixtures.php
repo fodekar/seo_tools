@@ -8,18 +8,20 @@ use App\Entity\SearchEngine;
 
 class SearchEngineFixtures extends Fixture
 {
+    const INDEX_VARIABLES = 'variables';
+
     public function load(ObjectManager $manager)
     {
         $data = [
             'Google' => [
-                'variables' => '?q=[query]&start=[position]'
+                self::INDEX_VARIABLES => '?q=[query]&start=[position]',
             ],
             'Yahoo' => [
-                'variables' => '?p=[query]&b=[position]'
+                self::INDEX_VARIABLES => '?p=[query]&b=[position]',
             ],
             'Bing' => [
-                'variables' => '?q=[query]&start=[position]'
-            ]
+                self::INDEX_VARIABLES => '?q=[query]&start=[position]',
+            ],
         ];
 
         foreach ($data as $name => $search_engine) {

@@ -13,6 +13,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 final class ThematicAdmin extends AbstractAdmin
 {
+    const COLUMN_NAME        = 'name';
+    const COLUMN_DESCRIPTION = 'description';
+
     /**
      * Default Datagrid values
      *
@@ -25,28 +28,28 @@ final class ThematicAdmin extends AbstractAdmin
     
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', EntityType::class, array(
+        $formMapper->add(self::COLUMN_NAME, EntityType::class, array(
                        'class' => 'App\Entity\Keywords',
                        'choice_label' => function ($keywords) {
                            $list = $keywords->getList();
                            return "{$list}";
                        }
         ));
-        $formMapper->add('description', TextType::class, [
+        $formMapper->add(self::COLUMN_DESCRIPTION, TextType::class, [
                         'label' => 'Description'
         ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name');
-        $datagridMapper->add('description');
+        $datagridMapper->add(self::COLUMN_NAME);
+        $datagridMapper->add(self::COLUMN_DESCRIPTION);
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('name');
-        $listMapper->addIdentifier('description');
+        $listMapper->addIdentifier(self::COLUMN_NAME);
+        $listMapper->addIdentifier(self::COLUMN_DESCRIPTION);
         $listMapper->addIdentifier('createdAt', null, array('label' => 'Date création', 'header_style' => 'width: 10% !important'));
         $listMapper->addIdentifier('updatedAt', null, array('label' => 'Date modification', 'header_style' => 'width: 10% !important'));
     }
