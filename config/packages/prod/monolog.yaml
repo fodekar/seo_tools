@@ -68,5 +68,5 @@ monolog:
             token:       xoxp-571231712704-571403756273-645319677043-db3eecf4b9a12900a9cb98afa7e5b3bb
             channel:     "#seo_tools"
             bot_name:    SEO-TOOLS-Error
-            icon_emoji: :ghost:
+            icon_emoji: :ghost
             level:      critical
