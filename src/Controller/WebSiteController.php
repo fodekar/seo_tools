@@ -9,7 +9,6 @@ use App\Entity\Thematic;
 use App\Service\SiteUpdateManager;
 use Psr\Log\LoggerInterface;
 
-
 class WebSiteController extends AbstractController
 {
     /**
@@ -17,8 +16,9 @@ class WebSiteController extends AbstractController
      */
     public function index(SiteUpdateManager $messageGenerator, LoggerInterface $logger)
     {
-        $messageGenerator->notifyOfSiteUpdates();
+        //$messageGenerator->notifyOfSiteUpdate();
 
+        /*
         $logger->info('I just got the logger');
         $logger->error('An error occurred');
 
@@ -26,21 +26,20 @@ class WebSiteController extends AbstractController
             // include extra "context" info in your logs
             'cause' => 'in_hurry',
         ]);
-
+        */
 
         // On récupère l'EntityManager
-        $em = $this->getDoctrine()->getManager();
-        $website_repository = $em->getRepository(Website::class);
+        $em                  = $this->getDoctrine()->getManager();
+        $website_repository  = $em->getRepository(Website::class);
         $thematic_repository = $em->getRepository(Thematic::class);
 
-        $website = $website_repository->findOneByName("TVcongo");
+        $website = $website_repository->findOneByName('TVcongo');
 
         try {
             $em->remove($website);
-            $em->flush();
-        } catch (\Throwable $th) { }
-
-
+            //$em->flush();
+        } catch (\Throwable $th) {
+        }
 
         // Création de l'entité Advert
         $advert = new Website();
@@ -64,17 +63,17 @@ class WebSiteController extends AbstractController
         // $em->persist($image);
 
         // Étape 2 : On déclenche l'enregistrement
-        $em->flush();
+        //$em->flush();
 
         //$website_repository->updateUrl("TVcongo", "http://zenga-mambu.com/");
 
-        $advert->setUrl("http://google.com/");
+        $advert->setUrl('http://google.com/');
 
-        $em->flush();
+        //$em->flush();
 
         return $this->render('web_site/index.html.twig', [
             'controller_name' => 'WebSiteController',
-            'thematic' => $thematic_repository->findOneById(3)
+            'thematic'        => $thematic_repository->findOneById(3),
         ]);
     }
 }
