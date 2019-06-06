@@ -17,7 +17,7 @@ class WebSiteController extends AbstractController
      */
     public function index(SiteUpdateManager $messageGenerator, LoggerInterface $logger)
     {
-        $messageGenerator->notifyOfSiteUpdates();
+        $messageGenerator->notifyOfSiteUpdate();
 
         $logger->info('I just got the logger');
         $logger->error('An error occurred');
