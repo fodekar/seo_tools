@@ -11,52 +11,59 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 final class RankingPagesAdmin extends AbstractAdmin
 {
+    const COLUMN_NUMBER_PAGE       = 'number_page';
+    const COLUMN_POSITION          = 'position';
+    const COLUMN_POSITION_PREVIOUS = 'position_previous';
+
     /**
-     * Default Datagrid values
+     * Default Datagrid values.
      *
      * @var array
      */
-    protected $datagridValues = array(
+    protected $datagridValues = [
         '_sort_order' => 'DESC',
-        '_sort_by' => 'createdAt',
-    );
-    
+        '_sort_by'    => 'createdAt',
+    ];
+
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('number_page', EntityType::class, array(
-                       'class' => 'App\Entity\SearchEngine',
-                       'choice_label' => function ($searchEngine) {
-                           $name = $searchEngine->getName();
-                           return "{$name}";
-                       }
-        ));
-        $formMapper->add('position', EntityType::class, array(
-                       'class' => 'App\Entity\Thematic',
-                       'choice_label' => function ($thematic) {
-                           $name = $thematic->getName();
-                           return "{$name}";
-                       },
-                       'label' => 'Thematic'
-        ));
-        $formMapper->add('position_previous', TextType::class, [
-                       'label' => 'Position_précédente'
+        $formMapper->add('searchengine', EntityType::class, [
+            'class'        => 'App\Entity\SearchEngine',
+            'choice_label' => function ($searchEngine) {
+                $name = $searchEngine->getName();
+
+                return "{$name}";
+            },
+            'label' => 'Moteur de recherche',
+        ]);
+        $formMapper->add('thematic', EntityType::class, [
+            'class'        => 'App\Entity\Thematic',
+            'choice_label' => function ($thematic) {
+                $name = $thematic->getName();
+
+                return "{$name}";
+            },
+            'label' => 'Thématique',
+        ]);
+        $formMapper->add(self::COLUMN_POSITION_PREVIOUS, TextType::class, [
+            'label' => 'Position précédente',
         ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('number_page');
-        $datagridMapper->add('position');
-        $datagridMapper->add('position_previous');
+        $datagridMapper->add(self::COLUMN_NUMBER_PAGE);
+        $datagridMapper->add(self::COLUMN_POSITION);
+        $datagridMapper->add(self::COLUMN_POSITION_PREVIOUS);
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('number_page');
-        $listMapper->addIdentifier('position');
-        $listMapper->addIdentifier('position_previous');
-        $listMapper->addIdentifier('createdAt', null, array('label' => 'Date création', 'header_style' => 'width: 10% !important'));
-        $listMapper->addIdentifier('updatedAt', null, array('label' => 'Date modification', 'header_style' => 'width: 10% !important'));
+        $listMapper->addIdentifier(self::COLUMN_NUMBER_PAGE);
+        $listMapper->addIdentifier(self::COLUMN_POSITION);
+        $listMapper->addIdentifier(self::COLUMN_POSITION_PREVIOUS);
+        $listMapper->addIdentifier('createdAt', null, ['label' => 'Date création', 'header_style' => 'width: 10% !important']);
+        $listMapper->addIdentifier('updatedAt', null, ['label' => 'Date modification', 'header_style' => 'width: 10% !important']);
     }
 
     public function toString($object)

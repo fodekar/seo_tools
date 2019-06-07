@@ -28,15 +28,19 @@ final class ThematicAdmin extends AbstractAdmin
     
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add(self::COLUMN_NAME, EntityType::class, array(
-                       'class' => 'App\Entity\Keywords',
-                       'choice_label' => function ($keywords) {
-                           $list = $keywords->getList();
-                           return "{$list}";
-                       }
+        $formMapper->add('keywords', EntityType::class, array(
+            'class' => 'App\Entity\Keywords',
+            'choice_label' => function ($keywords) {
+                $list = $keywords->getList();
+                return "{$list}";
+            },
+            'label' => 'Mot clés'
         ));
+        $formMapper->add(self::COLUMN_NAME, TextType::class, [
+            'label' => 'Nom'
+        ]);
         $formMapper->add(self::COLUMN_DESCRIPTION, TextType::class, [
-                        'label' => 'Description'
+            'label' => 'Description'
         ]);
     }
 
