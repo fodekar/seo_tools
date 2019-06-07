@@ -13,6 +13,13 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 final class SettingsAdmin extends AbstractAdmin
 {
+    const COLUMN_ENABLED        = 'enabled';
+    const COLUMN_LIMIT_PAGE     = 'limit_page';
+    const ATTR_LABEL            = 'label';
+    const LIB_ENABLED           = 'Actif';
+    const LIB_WEBSITE           = 'Site web';
+    const LIB_PAGINATION        = 'Pagination';
+
     /**
      * Default Datagrid values
      *
@@ -39,28 +46,28 @@ final class SettingsAdmin extends AbstractAdmin
                     $name = $website->getName();
                     return "{$name}";
                 },
-                'label' => 'Site web'
+                self::ATTR_LABEL => self::LIB_WEBSITE
             ))
-            ->add('enabled', TextType::class, [
-                'label' => 'Actif'
+            ->add(self::COLUMN_ENABLED, TextType::class, [
+                self::ATTR_LABEL => self::LIB_ENABLED
             ])
-            ->add('limit_page', TextType::class, [
-                'label' => 'Pagination'
+            ->add(self::COLUMN_LIMIT_PAGE, TextType::class, [
+                self::ATTR_LABEL => self::LIB_PAGINATION
             ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('enabled');
-        $datagridMapper->add('limit_page');
+        $datagridMapper->add(self::COLUMN_ENABLED, null, [self::ATTR_LABEL => self::LIB_ENABLED]);
+        $datagridMapper->add(self::COLUMN_LIMIT_PAGE, null, [self::ATTR_LABEL => self::LIB_PAGINATION]);
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('enabled');
-        $listMapper->addIdentifier('limit_page');
-        $listMapper->addIdentifier('createdAt', null, array('label' => 'Date création', 'header_style' => 'width: 10% !important'));
-        $listMapper->addIdentifier('updatedAt', null, array('label' => 'Date modification', 'header_style' => 'width: 10% !important'));
+        $listMapper->addIdentifier(self::COLUMN_ENABLED, null, [self::ATTR_LABEL => self::LIB_ENABLED]);
+        $listMapper->addIdentifier(self::COLUMN_LIMIT_PAGE, null, [self::ATTR_LABEL => self::LIB_PAGINATION]);
+        $listMapper->addIdentifier('createdAt', null, [self::ATTR_LABEL => 'Date création', 'header_style' => 'width: 10% !important']);
+        $listMapper->addIdentifier('updatedAt', null, [self::ATTR_LABEL => 'Date modification', 'header_style' => 'width: 15% !important']);
     }
 
     public function toString($object)

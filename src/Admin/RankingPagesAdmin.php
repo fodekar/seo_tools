@@ -67,7 +67,7 @@ final class RankingPagesAdmin extends AbstractAdmin
         $listMapper->addIdentifier(self::COLUMN_POSITION);
         $listMapper->addIdentifier(self::COLUMN_POSITION_PREVIOUS);
         $listMapper->addIdentifier('createdAt', null, [self::ATTR_LABEL => 'Date création', 'header_style' => 'width: 10% !important']);
-        $listMapper->addIdentifier('updatedAt', null, [self::ATTR_LABEL => 'Date modification', 'header_style' => 'width: 10% !important']);
+        $listMapper->addIdentifier('updatedAt', null, [self::ATTR_LABEL => 'Date modification', 'header_style' => 'width: 15% !important']);
     }
 
     public function toString($object)

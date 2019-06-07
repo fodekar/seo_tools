@@ -58,7 +58,7 @@ final class ThematicAdmin extends AbstractAdmin
         $listMapper->addIdentifier(self::COLUMN_NAME, null, [self::ATTR_LABEL => self::LIB_NAME]);
         $listMapper->addIdentifier(self::COLUMN_DESCRIPTION, null, [self::ATTR_LABEL => self::LIB_DESCRIPTION]);
         $listMapper->addIdentifier('createdAt', null, [self::ATTR_LABEL => 'Date création', 'header_style' => 'width: 10% !important']);
-        $listMapper->addIdentifier('updatedAt', null, [self::ATTR_LABEL => 'Date modification', 'header_style' => 'width: 10% !important']);
+        $listMapper->addIdentifier('updatedAt', null, [self::ATTR_LABEL => 'Date modification', 'header_style' => 'width: 15% !important']);
     }
 
     public function toString($object)
