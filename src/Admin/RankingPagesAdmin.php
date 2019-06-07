@@ -14,6 +14,7 @@ final class RankingPagesAdmin extends AbstractAdmin
     const COLUMN_NUMBER_PAGE       = 'number_page';
     const COLUMN_POSITION          = 'position';
     const COLUMN_POSITION_PREVIOUS = 'position_previous';
+    const ATTR_LABEL               = 'label';
 
     /**
      * Default Datagrid values.
@@ -34,7 +35,7 @@ final class RankingPagesAdmin extends AbstractAdmin
 
                 return "{$name}";
             },
-            'label' => 'Moteur de recherche',
+            self::ATTR_LABEL => 'Moteur de recherche',
         ]);
         $formMapper->add('thematic', EntityType::class, [
             'class'        => 'App\Entity\Thematic',
@@ -43,10 +44,10 @@ final class RankingPagesAdmin extends AbstractAdmin
 
                 return "{$name}";
             },
-            'label' => 'Thématique',
+            self::ATTR_LABEL => 'Thématique',
         ]);
         $formMapper->add(self::COLUMN_POSITION_PREVIOUS, TextType::class, [
-            'label' => 'Position précédente',
+            self::ATTR_LABEL => 'Position précédente',
         ]);
     }
 
@@ -62,8 +63,8 @@ final class RankingPagesAdmin extends AbstractAdmin
         $listMapper->addIdentifier(self::COLUMN_NUMBER_PAGE);
         $listMapper->addIdentifier(self::COLUMN_POSITION);
         $listMapper->addIdentifier(self::COLUMN_POSITION_PREVIOUS);
-        $listMapper->addIdentifier('createdAt', null, ['label' => 'Date création', 'header_style' => 'width: 10% !important']);
-        $listMapper->addIdentifier('updatedAt', null, ['label' => 'Date modification', 'header_style' => 'width: 10% !important']);
+        $listMapper->addIdentifier('createdAt', null, [self::ATTR_LABEL => 'Date création', 'header_style' => 'width: 10% !important']);
+        $listMapper->addIdentifier('updatedAt', null, [self::ATTR_LABEL => 'Date modification', 'header_style' => 'width: 10% !important']);
     }
 
     public function toString($object)
