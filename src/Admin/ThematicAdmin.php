@@ -13,8 +13,11 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 final class ThematicAdmin extends AbstractAdmin
 {
-    const COLUMN_NAME        = 'name';
-    const COLUMN_DESCRIPTION = 'description';
+    const COLUMN_NAME              = 'name';
+    const COLUMN_DESCRIPTION       = 'description';
+    const ATTR_LABEL               = 'label';
+    const LIB_NAME                 = 'Nom';
+    const LIB_DESCRIPTION          = 'Description';
 
     /**
      * Default Datagrid values
@@ -34,13 +37,13 @@ final class ThematicAdmin extends AbstractAdmin
                 $list = $keywords->getList();
                 return "{$list}";
             },
-            'label' => 'Mot clés'
+            self::ATTR_LABEL => 'Mot clés'
         ));
         $formMapper->add(self::COLUMN_NAME, TextType::class, [
-            'label' => 'Nom'
+            self::ATTR_LABEL => 'Nom'
         ]);
         $formMapper->add(self::COLUMN_DESCRIPTION, TextType::class, [
-            'label' => 'Description'
+            self::ATTR_LABEL => 'Description'
         ]);
     }
 
@@ -52,10 +55,10 @@ final class ThematicAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier(self::COLUMN_NAME);
-        $listMapper->addIdentifier(self::COLUMN_DESCRIPTION);
-        $listMapper->addIdentifier('createdAt', null, array('label' => 'Date création', 'header_style' => 'width: 10% !important'));
-        $listMapper->addIdentifier('updatedAt', null, array('label' => 'Date modification', 'header_style' => 'width: 10% !important'));
+        $listMapper->addIdentifier(self::COLUMN_NAME, null, [self::ATTR_LABEL => self::LIB_NAME]);
+        $listMapper->addIdentifier(self::COLUMN_DESCRIPTION, null, [self::ATTR_LABEL => self::LIB_DESCRIPTION]);
+        $listMapper->addIdentifier('createdAt', null, [self::ATTR_LABEL => 'Date création', 'header_style' => 'width: 10% !important']);
+        $listMapper->addIdentifier('updatedAt', null, [self::ATTR_LABEL => 'Date modification', 'header_style' => 'width: 10% !important']);
     }
 
     public function toString($object)

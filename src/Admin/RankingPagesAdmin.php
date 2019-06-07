@@ -15,6 +15,9 @@ final class RankingPagesAdmin extends AbstractAdmin
     const COLUMN_POSITION          = 'position';
     const COLUMN_POSITION_PREVIOUS = 'position_previous';
     const ATTR_LABEL               = 'label';
+    const LIB_SEARCH_ENGINE        = 'Moteur de recherche';
+    const LIB_THEMATIC             = 'Thématique';
+    const LIB_POSITION_PREVIOUS    = 'Position précédente';
 
     /**
      * Default Datagrid values.
@@ -35,7 +38,7 @@ final class RankingPagesAdmin extends AbstractAdmin
 
                 return "{$name}";
             },
-            self::ATTR_LABEL => 'Moteur de recherche',
+            self::ATTR_LABEL => self::LIB_SEARCH_ENGINE,
         ]);
         $formMapper->add('thematic', EntityType::class, [
             'class'        => 'App\Entity\Thematic',
@@ -44,10 +47,10 @@ final class RankingPagesAdmin extends AbstractAdmin
 
                 return "{$name}";
             },
-            self::ATTR_LABEL => 'Thématique',
+            self::ATTR_LABEL => self::LIB_THEMATIC,
         ]);
         $formMapper->add(self::COLUMN_POSITION_PREVIOUS, TextType::class, [
-            self::ATTR_LABEL => 'Position précédente',
+            self::ATTR_LABEL => self::LIB_POSITION_PREVIOUS,
         ]);
     }
 
