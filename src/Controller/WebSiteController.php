@@ -14,20 +14,8 @@ class WebSiteController extends AbstractController
     /**
      * @Route("/website", name="web_site")
      */
-    public function index(SiteUpdateManager $messageGenerator, LoggerInterface $logger)
+    public function index()
     {
-        //$messageGenerator->notifyOfSiteUpdate();
-
-        /*
-        $logger->info('I just got the logger');
-        $logger->error('An error occurred');
-
-        $logger->critical('I left the oven on!', [
-            // include extra "context" info in your logs
-            'cause' => 'in_hurry',
-        ]);
-        */
-
         // On récupère l'EntityManager
         $em                  = $this->getDoctrine()->getManager();
         $website_repository  = $em->getRepository(Website::class);
@@ -47,25 +35,10 @@ class WebSiteController extends AbstractController
         $advert->setUrl('TVcongo.com');
         $advert->setDescription("Site d'actualité");
 
-        // Création de l'entité Image
-        //$image = new Image();
-        //$image->setUrl('http://sdz-upload.s3.amazonaws.com/prod/upload/job-de-reve.jpg');
-        //$image->setAlt('Job de rêve');
-
-        // On lie l'image à l'annonce
-        //$advert->setImage($image);
-
         // Étape 1 : On « persiste » l'entité
         $em->persist($advert);
 
-        // Étape 1 bis : si on n'avait pas défini le cascade={"persist"},
-        // on devrait persister à la main l'entité $image
-        // $em->persist($image);
-
-        // Étape 2 : On déclenche l'enregistrement
         //$em->flush();
-
-        //$website_repository->updateUrl("TVcongo", "http://zenga-mambu.com/");
 
         $advert->setUrl('http://google.com/');
 
@@ -75,5 +48,25 @@ class WebSiteController extends AbstractController
             'controller_name' => 'WebSiteController',
             'thematic'        => $thematic_repository->findOneById(3),
         ]);
+    }
+
+        /**
+     * @Route("/debug", name="debug")
+     */
+    public function debug(SiteUpdateManager $messageGenerator, LoggerInterface $logger)
+    {
+        $messageGenerator->notifyOfSiteUpdate();
+
+        $logger->info('I just got the logger');
+        $logger->error('An error occurred');
+
+        $logger->critical('I left the oven on!', [
+            // include extra "context" info in your logs
+            'cause' => 'in_hurry',
+        ]);
+
+        return new Response(
+            '<html><body>debug mailer & logger</body></html>'
+        );
     }
 }
