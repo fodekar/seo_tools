@@ -16,7 +16,7 @@ addons:
 script:
    - composer install
    - sonar-scanner
-   #- vendor/bin/phpunit
+   - vendor/phpunit/phpunit/phpunit tests/
 
 before_script:
   - cp .env.test .env
