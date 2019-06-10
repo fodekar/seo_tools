@@ -76,6 +76,12 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "documentation": [
+            "php bin/couscous.phar generate --target=public/docs"
+        ],
+        "phpunit-metrics": [
+            "php bin/phpunit.phar --coverage-html public/test-coverage"
         ]
     },
     "conflict": {
