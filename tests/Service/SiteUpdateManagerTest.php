@@ -21,13 +21,11 @@ class SiteUpdateManagerTest extends TestCase
 
     public function testNotifyOfSiteUpdateOK()
     {
-        if (getenv('APP_ENV') == false) {
-            throw new \LogicException('It is not possible to test send mail');
+        if (getenv('APP_DEBUG') == true) {
+            $sender = new SiteUpdateManager(new MessageGenerator, $this->mailer);
+            $result = $sender->notifyOfSiteUpdate();
+
+            $this->assertEquals(1, $result);
         }
-
-        $sender = new SiteUpdateManager(new MessageGenerator, $this->mailer);
-        $result = $sender->notifyOfSiteUpdate();
-
-        $this->assertEquals(1, $result);
     }
 }
