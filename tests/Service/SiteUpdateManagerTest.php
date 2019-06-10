@@ -21,7 +21,7 @@ class SiteUpdateManagerTest extends TestCase
 
     public function testNotifyOfSiteUpdateOK()
     {
-        if (getenv('APP_DEBUG') === true) {
+        if (getenv('APP_DEBUG') === 'true') {
             $sender = new SiteUpdateManager(new MessageGenerator, $this->mailer);
             $result = $sender->notifyOfSiteUpdate();
 
