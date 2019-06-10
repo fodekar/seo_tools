@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Website;
 use App\Entity\Thematic;
 use App\Service\SiteUpdateManager;
@@ -26,8 +27,7 @@ class WebSiteController extends AbstractController
         try {
             $em->remove($website);
             //$em->flush();
-        } catch (\Throwable $th) {
-        }
+        } catch (\Throwable $th) { }
 
         // Création de l'entité Advert
         $advert = new Website();
@@ -50,7 +50,7 @@ class WebSiteController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/debug", name="debug")
      */
     public function debug(SiteUpdateManager $messageGenerator, LoggerInterface $logger)

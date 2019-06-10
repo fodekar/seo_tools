@@ -23,7 +23,7 @@ class SiteUpdateManager
             ->setFrom('chancelvyfodekar@gmail.com.com')
             ->setTo('hess.website@gmail.com')
             ->addPart(
-                'Someone just updated the site. We told them: '.$happyMessage
+                'Someone just updated the site. We told them: ' . $happyMessage
             );
 
         return $this->mailer->send($message) > 0;
