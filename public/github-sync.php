@@ -1,7 +1,6 @@
 <?php
 
 `git pull https://hess3077:T3R2GAvp@github.com/fodekar/seo_tools/`; // On lance la synchronisation du serveur de PROD avec le serveur Github
-`php composer.phar install`;
 
 function rrmdir($src)
 {
