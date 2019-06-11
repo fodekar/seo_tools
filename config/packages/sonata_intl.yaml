@@ -1,0 +1,6 @@
+sonata_intl:
+    timezone:
+        locales:
+            fr:    Europe/Paris
+            en_UK: Europe/London
+        default: Europe/Paris

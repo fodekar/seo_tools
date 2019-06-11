@@ -335,6 +335,21 @@
     "sonata-project/exporter": {
         "version": "1.11.1"
     },
+    "sonata-project/intl-bundle": {
+        "version": "2.6.0"
+    },
+    "sonata-project/translation-bundle": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.3",
+            "ref": "00e821cb362f00c6893f7183311893267330ecfe"
+        },
+        "files": [
+            "./config/packages/sonata_translation.yaml"
+        ]
+    },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
     },
