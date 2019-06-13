@@ -135,17 +135,52 @@
     "gitonomy/gitlib": {
         "version": "v1.0.4"
     },
+    "guzzlehttp/psr7": {
+        "version": "1.5.2"
+    },
+    "imagine/imagine": {
+        "version": "v0.7.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "jms/metadata": {
+        "version": "1.7.0"
+    },
+    "jms/parser-lib": {
+        "version": "1.0.0"
+    },
+    "jms/serializer": {
+        "version": "1.14.0"
+    },
+    "jms/serializer-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "fe60ce509ef04a3f40da96e3979bc8d9b13b2372"
+        },
+        "files": [
+            "./config/packages/dev/jms_serializer.yaml",
+            "./config/packages/jms_serializer.yaml",
+            "./config/packages/prod/jms_serializer.yaml"
+        ]
+    },
     "justinrainbow/json-schema": {
         "version": "5.2.8"
+    },
+    "knplabs/gaufrette": {
+        "version": "v0.8.3"
     },
     "knplabs/knp-menu": {
         "version": "2.3.0"
     },
     "knplabs/knp-menu-bundle": {
         "version": "v2.2.1"
+    },
+    "kriswallsmith/buzz": {
+        "version": "v0.16.1"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -156,6 +191,9 @@
     "ocramius/proxy-manager": {
         "version": "2.1.1"
     },
+    "phpcollection/phpcollection": {
+        "version": "0.5.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
@@ -164,6 +202,9 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "0.4.0"
+    },
+    "phpoption/phpoption": {
+        "version": "1.5.0"
     },
     "phpro/grumphp": {
         "version": "v0.15.2"
@@ -174,6 +215,9 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
@@ -182,6 +226,9 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "ralouphie/getallheaders": {
+        "version": "2.0.5"
     },
     "seld/jsonlint": {
         "version": "1.7.1"
@@ -239,8 +286,25 @@
     "sonata-project/doctrine-extensions": {
         "version": "1.3.0"
     },
+    "sonata-project/easy-extends-bundle": {
+        "version": "2.5.0"
+    },
     "sonata-project/exporter": {
         "version": "1.11.1"
+    },
+    "sonata-project/media-bundle": {
+        "version": "3.13",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.13",
+            "ref": "e25412e53b20827db07abb6f2aa0b8e4d26c284c"
+        },
+        "files": [
+            "./config/packages/sonata_media.yaml",
+            "./config/routes/sonata_media.yaml",
+            "./public/upload/media/.gitignore"
+        ]
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
