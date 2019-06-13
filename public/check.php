@@ -28,7 +28,7 @@ if (file_exists($autoloader = __DIR__.'/../../../autoload.php')) {
 } elseif (file_exists($autoloader = __DIR__.'/../vendor/autoload.php')) {
     require_once $autoloader;
 } else {
-    throw new \RuntimeException('Unable to find the Composer autoloader.');
+    throw new InvalidArgumentException('Unable to find the Composer autoloader.');
 }
 
 $symfonyVersion = class_exists('\Symfony\Component\HttpKernel\Kernel') ? \Symfony\Component\HttpKernel\Kernel::VERSION : null;

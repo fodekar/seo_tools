@@ -147,14 +147,35 @@
     "knplabs/knp-menu-bundle": {
         "version": "v2.2.1"
     },
+    "lexik/maintenance-bundle": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.1",
+            "ref": "c7b1a155b60c553d2c6e272d210e8614c89a7e5c"
+        },
+        "files": [
+            "./config/packages/lexik_maintenance.yaml"
+        ]
+    },
     "monolog/monolog": {
         "version": "1.24.0"
+    },
+    "myclabs/deep-copy": {
+        "version": "1.9.1"
     },
     "nikic/php-parser": {
         "version": "v4.2.1"
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "phar-io/manifest": {
+        "version": "1.0.3"
+    },
+    "phar-io/version": {
+        "version": "2.0.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -167,6 +188,42 @@
     },
     "phpro/grumphp": {
         "version": "v0.15.2"
+    },
+    "phpspec/prophecy": {
+        "version": "1.8.0"
+    },
+    "phpunit/dbunit": {
+        "version": "4.0.0"
+    },
+    "phpunit/php-code-coverage": {
+        "version": "6.1.4"
+    },
+    "phpunit/php-file-iterator": {
+        "version": "2.0.2"
+    },
+    "phpunit/php-text-template": {
+        "version": "1.2.1"
+    },
+    "phpunit/php-timer": {
+        "version": "2.1.2"
+    },
+    "phpunit/php-token-stream": {
+        "version": "3.0.1"
+    },
+    "phpunit/phpunit": {
+        "version": "4.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.7",
+            "ref": "f6f9ee3a511e9d9ad6a53d92fbaa1a709ed8c1ca"
+        },
+        "files": [
+            "./.env.test",
+            "./phpunit.xml.dist",
+            "./config/bootstrap.php",
+            "./tests/.gitignore"
+        ]
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -182,6 +239,39 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "sebastian/code-unit-reverse-lookup": {
+        "version": "1.0.1"
+    },
+    "sebastian/comparator": {
+        "version": "3.0.2"
+    },
+    "sebastian/diff": {
+        "version": "3.0.2"
+    },
+    "sebastian/environment": {
+        "version": "4.2.2"
+    },
+    "sebastian/exporter": {
+        "version": "3.1.0"
+    },
+    "sebastian/global-state": {
+        "version": "2.0.0"
+    },
+    "sebastian/object-enumerator": {
+        "version": "3.0.3"
+    },
+    "sebastian/object-reflector": {
+        "version": "1.1.1"
+    },
+    "sebastian/recursion-context": {
+        "version": "3.0.0"
+    },
+    "sebastian/resource-operations": {
+        "version": "2.0.1"
+    },
+    "sebastian/version": {
+        "version": "2.0.1"
     },
     "seld/jsonlint": {
         "version": "1.7.1"
@@ -239,8 +329,26 @@
     "sonata-project/doctrine-extensions": {
         "version": "1.3.0"
     },
+    "sonata-project/doctrine-orm-admin-bundle": {
+        "version": "3.9.0"
+    },
     "sonata-project/exporter": {
         "version": "1.11.1"
+    },
+    "sonata-project/intl-bundle": {
+        "version": "2.6.0"
+    },
+    "sonata-project/translation-bundle": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.3",
+            "ref": "00e821cb362f00c6893f7183311893267330ecfe"
+        },
+        "files": [
+            "./config/packages/sonata_translation.yaml"
+        ]
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.1"
@@ -608,6 +716,9 @@
     },
     "symfony/yaml": {
         "version": "v4.2.8"
+    },
+    "theseer/tokenizer": {
+        "version": "1.1.2"
     },
     "twig/extensions": {
         "version": "1.0",

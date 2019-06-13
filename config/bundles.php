@@ -20,4 +20,8 @@ return [
     Sonata\BlockBundle\SonataBlockBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
     Sonata\AdminBundle\SonataAdminBundle::class => ['all' => true],
+    Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle::class => ['all' => true],
+    Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle::class => ['all' => true],
+    Sonata\TranslationBundle\SonataTranslationBundle::class => ['all' => true],
+    Sonata\IntlBundle\SonataIntlBundle::class => ['all' => true],
 ];

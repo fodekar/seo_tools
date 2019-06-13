@@ -7,9 +7,16 @@ env:
     - GITHUB_REPO: "fodekar/seo_tools"
     - secure: "Cfyg6wZZszHbmuaIEnf0ZFWCm2kJhWRN+0SpVLL0fQMQXsxE+9oonMg+u9Y4B9fCDdMcaZIo5VpWFuI+OiakpGKATxPAL6GyxVaP38ot61hExUzwelB/a/fdr6HyXfIF5sGgywK0MViIQfS8DNL35bHOxZQVbrdkS9qlZ7IwQ3KdQewnQO9Almnwo3EqZsQORj4ADept7H6ERDUpgPELXmNSjRNIHzU5K/4HOLnutnKoJu7iWNizDOzSwP5505j87UeBSYVUEpxDswCEaYbUieIxdTm9u6/Jjb/NSFzFhKF8GouiM9BymsSXI/F0zw97699RCwr4vi4QoypIk9WKSm9dxDhCHPAR9wlhQNRK4fj1ikZeFDKETMIu5wyw//+D1L3RKwTMSNw1F0FMkcusJr1bkiuI35MdFHlzNWtVunUJItMZ7yh/NxA72/yRzpVy4fZ4JX4+NK/Jia6in2L2wcYctuom4CmVUfZ85yNcvnSnVePbKv1NZChI1xxsYoTlvGmHWU54BNv0hnySDOoqCTx1DuQA/BEbacnE6JA6VdHn/bKWEQytz1TpMqpmNsS4MLxO9NFswGPDRl4GV4V1uGjSpqL+WJJHm5XnFWrwhrM6wOUqhRIT9/MBj6rSnVbRFlGme0Myqj8DWsBHUzQSl6iJIPZEZiI9CP3jADTFBEU="
 
+addons:
+  sonarcloud:
+    organization: "fodekar-github" # the key of the org you chose at step #3
+    token:
+      secure: "Cxjk48r0jgCi70r09fd9lIFNVd5iiraVLTobaQ/PauWnGCS8OKvYCXIJeDzcxZK3qIkek87shBbTtrsSErxMP1GGTg185Ra/+Uj8L7pIbDpz4ZFQ1yMw2FmiPA5oR3SYnK8j7hdxlqKc1ZKFH9SqFv/jXLcROmiomhKSf5e9hQnFjOGRmRFvk81Yn9ZUetp7FOyP+9opdTroPf0TSUZW8iVJSCqODUYEOrym5UFY4zeSKkOiP1VY1Kcw7tifo60WGc9FOFgzFcbt9I+KvX/gLL/mgG82wEfyAo4T5PbkslrdR6RhkD1OukqAQirRFtv82MFzrxcylTKS4u+6/y2Hkd5D3hKrowB6JYCI3nso3R/hMvGLDlan1jhyNALG6fWkc0vTSYoppVTT1JhBjGlJG3Wb4GtJzosdTtsRJoHVWhwPVZFWyfqKdXMdnRAqV7FIu5Pl9zGVTL+CPZlKNzju9hh2UOJ8/WdJlatZ/k0gIwNJB8HfBk9FFXxPqi2077OojIfge/9IZTLuZmGpUaD7ugxeNjanUS+R5BvGC07WEQN8ZRR21fmef9rnEAJBRzld92WWQQWBTockzFkUw37E53Y+kiXFrYDt+nIm9ilpiviJ7RmQOanpnhk56sd+/T0KI8eTukyXp8IpZYVhcY8hwfSJdcef0LFqZU0vyzjWTXk=" # encrypted value of your token
+
 script:
    - composer install
-   #- vendor/bin/phpunit
+   - sonar-scanner
+   - vendor/phpunit/phpunit/phpunit tests/
 
 before_script:
   - cp .env.test .env
@@ -27,6 +34,7 @@ notifications:
     recipients:
       - chancelvyfodekar@gmail.com
       - hess.website@gmail.com
+      - technical@seo-elsa.com
     on_success: change
     on_failure: always
   slack:
@@ -34,3 +42,9 @@ notifications:
       - "Build <%{build_url}|#%{build_number}: %{commit_subject}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} in %{duration}"
     rooms:
       - hess-kn:FsAjzGENr3KPZr8p6TC7dDVV#seo_tools
+
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh production $TRAVIS_TAG
+  on:
+    branch: master

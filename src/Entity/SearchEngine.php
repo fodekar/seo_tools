@@ -18,7 +18,11 @@ class SearchEngine
     private $id;
 
     /**
+<<<<<<< HEAD
      * @ORM\Column(type="string", length=255)
+=======
+     * @ORM\Column(type="string", length=255, unique=true)
+>>>>>>> 49e3de886f6d1585a6d562123da76f7f462ffcf5
      */
     private $name;
 
