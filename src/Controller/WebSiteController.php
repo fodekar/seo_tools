@@ -26,7 +26,7 @@ class WebSiteController extends AbstractController
 
         try {
             $em->remove($website);
-            //$em->flush();
+           
         } catch (\Throwable $th) { }
 
         // Création de l'entité Advert
@@ -38,12 +38,11 @@ class WebSiteController extends AbstractController
         // Étape 1 : On « persiste » l'entité
         $em->persist($advert);
 
-        //$em->flush();
+       
 
         $advert->setUrl('http://google.com/');
 
-        //$em->flush();
-
+        
         return $this->render('web_site/index.html.twig', [
             'controller_name' => 'WebSiteController',
             'thematic'        => $thematic_repository->findOneById(3),

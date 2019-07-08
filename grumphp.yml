@@ -40,7 +40,7 @@ parameters:
             max_body_width: 80
             max_subject_width: 70
             matchers:
-                Must contain MANTIS issue number: /\[SEO_TOOLS-\d+\] /
+                Must contain MANTIS issue number: /\[ELT-\d+\] /
             case_insensitive: true
         #phpparser: ~
         #phpstan: ~
